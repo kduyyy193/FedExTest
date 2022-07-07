@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>FedEx</title>
+</head>
+<body>
+    <div class="container">
+        <div class="product">
+            <div class="slider">
+                <div class="product-img">
+                    <img src="./assets//img/01.jpg" alt="null"/>
+                </div>
+                <div class="slider-img">
+                 </div>
+            </div> 
+            <div class="product-info">
+                <div class="product_name">
+                    FedEx Standard for 15KG Packaging (20" x 20" x 12")
+                    </div>
+                    <div class="product_desc">
+                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas cupiditate doloremque veritatis ducimus! Aliquam rerum magnam enim excepturi hic nam.
+                    </div>
+                    <div class="product_price">
+                        <span class="product_price--new">$125.00</span>
+                        <span class="product_price--old">$250.00</span>
+                        <span class="product_price--sale">50%</span>
+                    </div>
+                    <div id="error-quan"></div>
+                    <div class="product_submit">
+                        <div class="product_quantity">
+                            <div id="decrease" >-</div>
+                            <input id="quan" value="1" min="1" />
+                            <div id="increase">+</div>
+                        </div>
+                        <Button class="btn">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to cart
+                        </Button>
+                    </div>
+                </div>
+            </div>
+    </div> 
+    <div class="modal_loading">
+        <div class="loading"></div>
+    </div>
+    <script>
+
+
+        // Loading 
+        
+        const btn = document.querySelector(".btn")
+        const loading = document.querySelector(".modal_loading")
+
+        btn.addEventListener("click", function(){
+                loading.style.display = "block"
+            setTimeout(function(){
+                loading.style.display = "none"
+            }, 1500)
+        })
+
+        // Quantity 
+
+        const quan = document.querySelector("#quan")
+        const increase = document.querySelector("#increase")
+        const decrease = document.querySelector("#decrease")
+        const error = document.querySelector("#error-quan")
+
+        increase.addEventListener('click', function() {
+            quan.value++
+        if (quan.value  >= 1 ) {
+            error.innerHTML = ""
+            }
+        })
+        decrease.addEventListener('click', function() {
+            quan.value--
+        if (quan.value <= 0 ) {
+                quan.value = 0
+            error.innerHTML = "Ít nhất phải 1 có sản phẩm"
+            }
+        })
+        quan.addEventListener("change", function() {
+            if (quan.value <= 0 ) {
+                error.innerHTML = "Ít nhất phải 1 có sản phẩm"
+                }
+            else {
+                error.innerHTML = ""
+            }
+        })
+
+
+        // Slider 
+
+        const images = [
+            {
+                id: 1, 
+                path: "./assets/img/01.jpg"
+            },
+            {
+                id: 2, 
+                path: "./assets/img/02.jpg"
+            },
+            {
+                id: 3, 
+                path: "./assets/img/03.jpg"
+            },
+            {
+                id: 4, 
+                path: "./assets/img/04.jpg"
+            },
+        ]
+        const sliderImage = document.querySelector(".slider-img")
+        const productImage = document.querySelector(".product-img img")
+        console.log(productImage.src)
+
+        const htmls = images.map((image, id) => {
+            return `
+            <img src=${image.path} alt=${id}>
+            `
+        })
+
+        sliderImage.innerHTML = htmls.join("")
+     
+        sliderImage.addEventListener("click", function(e){
+            productImage.src = e.target.src
+        })
+        
+    </script>
+</body>
+</html>
