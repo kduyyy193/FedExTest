@@ -133,10 +133,13 @@ ul {
 .slider-img {
   max-width: 100%;
   margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 8px;
 }
 
 .img-options {
-  width: calc(25% - 0.903%);
+  max-width: 100%;
   cursor: pointer;
 }
 
