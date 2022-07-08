@@ -17,7 +17,7 @@
                     <img src="./assets//img/01.jpg" alt="null"/>
                 </div>
                 <div class="slider-img">
-                 </div>
+                </div>
             </div> 
             <div class="product-info">
                 <div class="product_name">
@@ -116,11 +116,10 @@
         ]
         const sliderImage = document.querySelector(".slider-img")
         const productImage = document.querySelector(".product-img img")
-        console.log(productImage.src)
 
         const htmls = images.map((image, id) => {
             return `
-            <img src=${image.path} alt=${id}>
+            <img class="img-options" src=${image.path} alt=${id}>
             `
         })
 
