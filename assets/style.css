@@ -136,7 +136,7 @@ ul {
 }
 
 .img-options {
-  width: calc(25% - 3px);
+  width: calc(25% - 0.9%);
   cursor: pointer;
 }
 
